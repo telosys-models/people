@@ -1,0 +1,6 @@
+Country {
+
+	code : string { @Id @MaxLen(2)};
+	
+	name : string;
+}

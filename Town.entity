@@ -1,0 +1,15 @@
+// Entity Town
+
+Town {
+
+	// ATTRIBUTES
+	id : int { @Id  @DbName(ID) } ; 
+	name : string ;
+	
+	// Unnamed Foreign Key for COUNTRY :
+	countryCode : string { @DbName(COUNTRY_CODE) }; 
+	
+	// Link based only on the attribute name :
+	country : Country { @LinkByAttr(countryCode) } ;
+	
+}

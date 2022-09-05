@@ -1,0 +1,24 @@
+
+@DbTable(TPERSON)
+#Foo(xyz) // specific tag "Foo" with value
+Person {
+
+	// Basic attributes 
+	id : int { @Id }; 
+	firstName : string { @MaxLen( 3)  #Capitalize } ; // specific tag "Capitalize" 
+	lastName  : string { @Label(Last name) #Uppercase } ; // specific tag "Uppercase" 
+	birthDate : date ;
+	
+	// Foreing Keys usable in LINKS
+	countryCode : string   { @FK(Country) } ; // Simple FK without name
+	
+	deptGroupCode    : string { @DbName(DEP_GROUP_CODE)    } ; 
+	deptDivisionCode : int    { @DbName(DEP_DIVISION_CODE) } ;
+	
+	townId : int { @FK(FK_PERSON_TOWN, Town) } ; // Simple FK with name
+
+	// LINKS ("to one")
+	country    : Country    { @FetchTypeLazy  @Optional } ; // no @LinkByXxx => FK inference 
+	department : Department { @LinkByAttr(deptGroupCode , deptDivisionCode) }; 
+	town       : Town       { @LinkByFK(FK_PERSON_TOWN) } ;
+}

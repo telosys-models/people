@@ -1,0 +1,8 @@
+Department {
+
+    // Composite PK 
+	grpCode : string { @Id @DbName(GROUP_CODE)    @MaxLen(2) };
+	divCode : int    { @Id @DbName(DIVISION_CODE) };
+	
+	name : string;
+}

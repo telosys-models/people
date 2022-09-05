@@ -1,0 +1,16 @@
+
+Area {
+
+	// ATTRIBUTES
+	id   : int { @Id } ; 
+	name : string ;
+	
+	// Foreign Key for COUNTRY (with explicit name)
+	countryCode : string  { @DbName(COUNTRY_CODE) @FK(FK_AREA_COUNTRY, Country) } ;
+
+	// Link by implicit FK (search a unique FK targeting Country)
+	country     : Country  ;  
+
+	// Link by explicit FK
+	// country     : Country  { @LinkByFK(FK_AREA_COUNTRY) } ;  
+}
